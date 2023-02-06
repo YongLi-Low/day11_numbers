@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,7 +13,7 @@ import org.springframework.ui.Model;
 
 // Tell Spring Boot this is the controller
 @Controller
-@RequestMapping(path = {"/", "/index.html"})
+@RequestMapping(path = {"/", "/index.html"}, produces = MediaType.TEXT_HTML_VALUE)
 public class ImageController {
     
     public String getFileNames() {
@@ -39,7 +40,7 @@ public class ImageController {
         return result.get(fileIndex);
     }
 
-    // GET '/' or '/index.html'
+    // GET / or GET /index.html
     @GetMapping
     public String getImage(Model model) {
 
